@@ -36,10 +36,10 @@ export const filtersFetchingError = () => {
   };
 };
 
-export const deleteHero = (heroes, id) => {
+export const deleteHero = (id) => {
   return {
     type: 'DELETE_HERO',
-    payload: heroes.filter((hero) => hero.id !== id),
+    payload: id,
   };
 };
 
@@ -47,5 +47,12 @@ export const addHero = (newHero) => {
   return {
     type: 'ADD_HERO',
     payload: newHero,
+  };
+};
+
+export const activeFilterChanged = (filterKey) => {
+  return {
+    type: 'ACTIVE_FILTER_CHANGED',
+    payload: filterKey,
   };
 };

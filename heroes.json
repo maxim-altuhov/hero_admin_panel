@@ -22,23 +22,28 @@
   "filters": [
     {
       "key": "all",
-      "value": "Все"
+      "value": "Все",
+      "className": "btn-outline-dark"
     },
     {
       "key": "fire",
-      "value": "Огонь"
+      "value": "Огонь",
+      "className": "btn-danger"
     },
     {
       "key": "water",
-      "value": "Вода"
+      "value": "Вода",
+      "className": "btn-primary"
     },
     {
       "key": "wind",
-      "value": "Ветер"
+      "value": "Ветер",
+      "className": "btn-success"
     },
     {
       "key": "earth",
-      "value": "Земля"
+      "value": "Земля",
+      "className": "btn-secondary"
     }
   ]
 }
