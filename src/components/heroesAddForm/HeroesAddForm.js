@@ -34,10 +34,10 @@ const HeroesAddForm = () => {
       element: heroElement,
     };
 
-    dispatch(heroesFetching());
     request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(newHero))
+      .then(() => console.log('ADD HERO'))
       .then(() => dispatch(addHero(newHero)))
-      .catch(() => dispatch(heroesFetchingError()));
+      .catch((err) => console.log(err));
 
     setName('');
     setDescr('');

@@ -26,13 +26,11 @@ const heroes = (state = initialState, action) => {
       return {
         ...state,
         heroes: state.heroes.filter((item) => item.id !== action.payload),
-        heroesLoadingStatus: 'idle',
       };
     case 'ADD_HERO':
       return {
         ...state,
         heroes: [...state.heroes, action.payload],
-        heroesLoadingStatus: 'idle',
       };
     default:
       return state;
