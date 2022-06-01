@@ -24,7 +24,7 @@ const HeroesListItem = ({ name, description, element, onDeleteHero }) => {
         src="http://www.stpaulsteinbach.org/wp-content/uploads/2014/09/unknown-hero.jpg"
         className="img-fluid w-25 d-inline"
         alt="unknown hero"
-        style={{ objectFit: 'cover' }}
+        style={{ objectFit: 'cover', minHeight: '115px' }}
       />
       <div className="card-body">
         <h3 className="card-title">{name}</h3>
