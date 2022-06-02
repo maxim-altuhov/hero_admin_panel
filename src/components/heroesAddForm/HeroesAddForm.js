@@ -3,7 +3,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 
+import store from '../../store';
 import { addHero } from '../heroesList/heroesSlice';
+import { allFilters } from '../heroesFilters/filtersSlice';
 
 // Задача для этого компонента:
 // Реализовать создание нового героя с введенными данными. Он должен попадать
@@ -20,7 +22,8 @@ const HeroesAddForm = () => {
   const [heroDescr, setDescr] = useState('');
   const [heroElement, setElement] = useState('');
 
-  const { filters, filtersLoadingStatus } = useSelector((state) => state.filters);
+  const { filtersLoadingStatus } = useSelector((state) => state.filters);
+  const filters = allFilters(store.getState());
   const dispatch = useDispatch();
   const { request } = useHttp();
 
@@ -52,12 +55,12 @@ const HeroesAddForm = () => {
     }
 
     if (filters && filters.length > 0) {
-      return filters.map(({ key, value }) => {
+      return filters.map(({ id, value }) => {
         // eslint-disable-next-line array-callback-return
-        if (key === 'all') return;
+        if (id === 'all') return;
 
         return (
-          <option key={key} value={key}>
+          <option key={id} value={id}>
             {value}
           </option>
         );

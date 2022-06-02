@@ -1,11 +1,9 @@
-import { useHttp } from '../../hooks/http.hook';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';
 
-import { fetchFilters } from '../../actions';
-import { activeFilterChanged } from './filtersSlice';
-
+import store from '../../store';
+import { fetchFilters, activeFilterChanged, allFilters } from './filtersSlice';
 import Spinner from '../spinner/Spinner';
 
 // Задача для этого компонента:
@@ -16,12 +14,12 @@ import Spinner from '../spinner/Spinner';
 // Представьте, что вы попросили бэкенд-разработчика об этом
 
 const HeroesFilters = () => {
-  const { filters, filtersLoadingStatus, activeFilter } = useSelector((state) => state.filters);
+  const filters = allFilters(store.getState());
+  const { filtersLoadingStatus, activeFilter } = useSelector((state) => state.filters);
   const dispatch = useDispatch();
-  const { request } = useHttp();
 
   useEffect(() => {
-    dispatch(fetchFilters(request));
+    dispatch(fetchFilters());
     // eslint-disable-next-line
   }, []);
 
@@ -36,16 +34,16 @@ const HeroesFilters = () => {
       return <h5 className="text-center mt-5">Фильтры не найдены</h5>;
     }
 
-    return filters.map(({ key, value, className }) => {
+    return filters.map(({ id, value, className }) => {
       const btnClass = classNames('btn', className, {
-        active: key === activeFilter,
+        active: id === activeFilter,
       });
       return (
         <button
-          key={key}
-          id={key}
+          key={id}
+          id={id}
           className={btnClass}
-          onClick={() => dispatch(activeFilterChanged(key))}
+          onClick={() => dispatch(activeFilterChanged(id))}
         >
           {value}
         </button>
