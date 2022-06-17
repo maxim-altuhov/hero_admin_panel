@@ -7,16 +7,6 @@ import store from '../../store';
 import { addHero } from '../heroesList/heroesSlice';
 import { allFilters } from '../heroesFilters/filtersSlice';
 
-// Задача для этого компонента:
-// Реализовать создание нового героя с введенными данными. Он должен попадать
-// в общее состояние и отображаться в списке + фильтроваться
-// Уникальный идентификатор персонажа можно сгенерировать через uiid
-// Усложненная задача:
-// Персонаж создается и в файле json при помощи метода POST
-// Дополнительно:
-// Элементы <option></option> желательно сформировать на базе
-// данных из фильтров
-
 const HeroesAddForm = () => {
   const [heroName, setName] = useState('');
   const [heroDescr, setDescr] = useState('');
@@ -114,7 +104,6 @@ const HeroesAddForm = () => {
           name="element"
           value={heroElement}
         >
-          <option>Я владею элементом...</option>
           {renderFilters(filters, filtersLoadingStatus)}
         </select>
       </div>

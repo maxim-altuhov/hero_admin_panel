@@ -40,5 +40,5 @@ const { actions, reducer } = filtersSlice;
 
 export default reducer;
 export const { selectAll: allFilters } = filtersAdapter.getSelectors((state) => state.filters);
-export const { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged } =
-  actions;
+// prettier-ignore
+export const { filtersFetching, filtersFetched, filtersFetchingError, activeFilterChanged } =  actions;
