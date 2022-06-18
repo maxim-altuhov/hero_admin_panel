@@ -1,4 +1,4 @@
-import { useHttp } from '../../hooks/http.hook';
+// import { useHttp } from '../../hooks/http.hook';
 import { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
@@ -13,7 +13,7 @@ const HeroesList = () => {
   const filteredHeroes = useSelector(filteredHeroesSelector);
   const heroesLoadingStatus = useSelector((state) => state.heroes.heroesLoadingStatus);
   const dispatch = useDispatch();
-  const { request } = useHttp();
+  // const { request } = useHttp();
 
   useEffect(() => {
     dispatch(fetchHeroes());
@@ -22,13 +22,14 @@ const HeroesList = () => {
 
   const onDeleteHero = useCallback(
     (id) => {
-      request(process.env.PUBLIC_URL + '/json/data.json', 'heroes', 'DELETE')
-        .then(() => console.log('DELETED'))
-        .then(() => dispatch(deleteHero(id)))
-        .catch((err) => console.log(err));
+      // request(process.env.PUBLIC_URL + '/json/data.json', 'heroes', 'DELETE')
+      //   .then(() => console.log('DELETED'))
+      //   .then(() => dispatch(deleteHero(id)))
+      //   .catch((err) => console.log(err));
+      dispatch(deleteHero(id));
     },
-    // eslint-disable-next-line
-    [request],
+    // [request],
+    [dispatch],
   );
 
   if (heroesLoadingStatus === 'loading') {

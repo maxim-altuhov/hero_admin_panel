@@ -1,4 +1,4 @@
-import { useHttp } from '../../hooks/http.hook';
+// import { useHttp } from '../../hooks/http.hook';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,12 +10,12 @@ import { allFilters } from '../heroesFilters/filtersSlice';
 const HeroesAddForm = () => {
   const [heroName, setName] = useState('');
   const [heroDescr, setDescr] = useState('');
-  const [heroElement, setElement] = useState('');
+  const [heroElement, setElement] = useState('fire');
 
   const { filtersLoadingStatus } = useSelector((state) => state.filters);
   const filters = allFilters(store.getState());
   const dispatch = useDispatch();
-  const { request } = useHttp();
+  // const { request } = useHttp();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -27,11 +27,12 @@ const HeroesAddForm = () => {
       element: heroElement,
     };
 
-    request(process.env.PUBLIC_URL + '/json/data.json', 'heroes', 'POST', JSON.stringify(newHero))
-      .then(() => console.log('ADD HERO'))
-      .then(() => dispatch(addHero(newHero)))
-      .catch((err) => console.log(err));
+    // request(process.env.PUBLIC_URL + '/json/data.json', 'heroes', 'POST', JSON.stringify(newHero))
+    //   .then(() => console.log('ADD HERO'))
+    //   .then(() => dispatch(addHero(newHero)))
+    //   .catch((err) => console.log(err));
 
+    dispatch(addHero(newHero));
     setName('');
     setDescr('');
     setElement('');

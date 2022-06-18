@@ -6,13 +6,6 @@ import store from '../../store';
 import { fetchFilters, activeFilterChanged, allFilters } from './filtersSlice';
 import Spinner from '../spinner/Spinner';
 
-// Задача для этого компонента:
-// Фильтры должны формироваться на основании загруженных данных
-// Фильтры должны отображать только нужных героев при выборе
-// Активный фильтр имеет класс active
-// Изменять json-файл для удобства МОЖНО!
-// Представьте, что вы попросили бэкенд-разработчика об этом
-
 const HeroesFilters = () => {
   const filters = allFilters(store.getState());
   const { filtersLoadingStatus, activeFilter } = useSelector((state) => state.filters);
