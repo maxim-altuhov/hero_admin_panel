@@ -22,7 +22,7 @@ const HeroesList = () => {
 
   const onDeleteHero = useCallback(
     (id) => {
-      request(process.env.PUBLIC_URL + `/json/data.json/${id}`, 'DELETE')
+      request(process.env.PUBLIC_URL + '/json/data.json', 'heroes', 'DELETE')
         .then(() => console.log('DELETED'))
         .then(() => dispatch(deleteHero(id)))
         .catch((err) => console.log(err));

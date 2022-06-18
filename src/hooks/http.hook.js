@@ -15,7 +15,7 @@ export const useHttp = () => {
 
       const data = await response.json();
 
-      return data[target];
+      return target ? data[target] : data;
     } catch (e) {
       throw e;
     }
