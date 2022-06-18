@@ -1,6 +1,7 @@
 export const useHttp = () => {
   const request = async (
     url,
+    target = '',
     method = 'GET',
     body = null,
     headers = { 'Content-Type': 'application/json' },
@@ -14,7 +15,7 @@ export const useHttp = () => {
 
       const data = await response.json();
 
-      return data;
+      return data[target];
     } catch (e) {
       throw e;
     }

@@ -27,7 +27,7 @@ const HeroesAddForm = () => {
       element: heroElement,
     };
 
-    request(`http://localhost:3001/heroes`, 'POST', JSON.stringify(newHero))
+    request(process.env.PUBLIC_URL + '/json/data.json', 'heroes', 'POST', JSON.stringify(newHero))
       .then(() => console.log('ADD HERO'))
       .then(() => dispatch(addHero(newHero)))
       .catch((err) => console.log(err));
